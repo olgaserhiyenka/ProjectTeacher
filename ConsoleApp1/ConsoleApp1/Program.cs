@@ -9,40 +9,39 @@ namespace ConsoleApp1
             int n = 10;
             
             char[,] matrixMap = new char[n, n];
+            
             char[,] matrixDisplay = new char[n, n];
 
             Hero player = new Hero(0,0,0,0);
+            
             player= kartGenerate(matrixMap, matrixDisplay, n);
 
             Print2DArray(matrixDisplay, n);
+            
             Print2DArray(matrixMap, n);
             
             ConsoleKeyInfo key;
+            
             do
             {
-                
                 key = Console.ReadKey(true);
+            
                 if (key.Key == ConsoleKey.LeftArrow)
                 {
                     int x, y;
+                
                     if (player.X != 0)
                     { 
                         x = player.X--;
+                    
                         player.step();
-
                     }
                 }
-                   player.InfoPrint();
+                
+                player.InfoPrint();
             }
             while (key.Key != ConsoleKey.Escape);
-            
-
-        }// end main
-
-
-
-
-
+        }
 
 // PrintmatrixMapMap(matrixMap);
         public static void Print2DArray(char[,] arr, int n)
