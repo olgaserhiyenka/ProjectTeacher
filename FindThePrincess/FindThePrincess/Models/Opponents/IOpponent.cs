@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace FindThePrincess.Models.Opponents
 {
-    interface IOpponent
+    public interface IOpponent
     {
+        string Name { get; }
+
+        string Level { get; }
+
+        int Damage { get; }
     }
 }

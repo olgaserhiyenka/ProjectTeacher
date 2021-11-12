@@ -1,6 +1,6 @@
 ﻿namespace FindThePrincess.Models.Opponents
 {
-    public class Orc
+    public class Orc : IOpponent
     {
         public string Name { get; private set; }
 
