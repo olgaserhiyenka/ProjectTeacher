@@ -2,13 +2,13 @@
 
 namespace FindThePrincess.Models.Maps.Heroes
 {
-    public class HeroPosition
+    public class HeroOnMap
     {
         public Hero Hero { get; private set; }
 
         public Position Position { get; private set; }
 
-        public HeroPosition(
+        public HeroOnMap(
             Hero hero,
             Position position)
         {
