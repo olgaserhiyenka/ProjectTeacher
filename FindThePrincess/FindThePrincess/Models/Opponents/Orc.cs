@@ -1,4 +1,4 @@
-﻿namespace FindThePrincess.Models.Opponents
+namespace FindThePrincess.Models.Opponents
 {
     public class Orc : IOpponent
     {

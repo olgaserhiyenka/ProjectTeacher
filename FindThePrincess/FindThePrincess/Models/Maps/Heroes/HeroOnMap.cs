@@ -1,4 +1,4 @@
-﻿using FindThePrincess.Models.Heroes;
+using FindThePrincess.Models.Heroes;
 
 namespace FindThePrincess.Models.Maps.Heroes
 {
