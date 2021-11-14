@@ -6,7 +6,19 @@ namespace FindThePrincess
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            while (true)
+            {
+                Console.WriteLine("Вы готовы начать?");
+
+                if (false)
+                {
+                    break;
+                }
+                else
+                {
+                    ConsoleGameHelper.Start();
+                }
+            }
         }
     }
 }

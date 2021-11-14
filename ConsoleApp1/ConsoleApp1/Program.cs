@@ -43,7 +43,6 @@ namespace ConsoleApp1
             while (key.Key != ConsoleKey.Escape);
         }
 
-// PrintmatrixMapMap(matrixMap);
         public static void Print2DArray(char[,] arr, int n)
         {
             Console.Write("\n");
@@ -51,10 +50,9 @@ namespace ConsoleApp1
             {
                 for (int j = 0; j < n; j++)
                 {
-                    //Random rnd = new Random();
-                    //int chislo = rnd.Next(-10, 10);
                     Console.Write(arr[j, i]);
                 }
+
                 Console.Write("\n");
             }
         }
@@ -64,20 +62,12 @@ namespace ConsoleApp1
             for (int i = 0; i < a.GetLength(0); ++i)
             {
                 for (int j = 0; i < a.GetLength(1); ++i)
-                    Console.Write("\t" + a.GetValue(i,j));
+                {
+                    Console.Write("\t" + a.GetValue(i, j));
+                }
+
                 Console.WriteLine();
-
-
-                //foreach (char[] x in a)
-                //{
-                //    foreach (char y in x)
-                //        Console.Write("\t " + y);
-                //    Console.WriteLine();
-                //}
             }
-
-
-
         }
 
         public static Hero kartGenerate(char[,] matrixMap, char[,] matrixDisplay, int n)
@@ -91,25 +81,42 @@ namespace ConsoleApp1
                 }
             }
 
-            //  
-
             var rand = new Random();
 
             int count = 0;
-            int HeroCoordinate = rand.Next(4);// генеруруем номер угла карты
+
+            // генеруруем номер угла карты
+            int HeroCoordinate = rand.Next(4);
+
             int PrincessCoordinate;
+
             int PlayerX = 0, PlayerY = 0, PincessX = 0, PrincessY = 0;
-            while (true)// генеруруем номер угла карты отличный от героя
+
+            // генеруруем номер угла карты отличный от героя
+            while (true)
             {
                 PrincessCoordinate = rand.Next(4);
+
                 if (PrincessCoordinate != HeroCoordinate)
+                {
                     break;
+                }
             }
 
             switch (HeroCoordinate)//наносим на карту  героя
             {
                 case 0:
-                    matrixMap[0, 0] = 'H'; matrixDisplay[0, 0] = 'H'; PlayerX = 0; PlayerY = 0; break;
+                {
+                    matrixMap[0, 0] = 'H';
+
+                    matrixDisplay[0, 0] = 'H';
+
+                    PlayerX = 0;
+
+                    PlayerY = 0;
+
+                    break;
+                }
                 case 1:
                     matrixMap[9, 0] = 'H'; matrixDisplay[9, 0] = 'H'; PlayerX = 9; PlayerY = 0; break;
                 case 2:
@@ -144,21 +151,8 @@ namespace ConsoleApp1
                     matrixMap[NumRow, NumCol] = 'x';
                     count++;
                 }
-
-
             }
             return player;
         }
-
-        
-
-
-
-
-
-
     }
 }
-
-
-    

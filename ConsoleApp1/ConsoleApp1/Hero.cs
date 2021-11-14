@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ConsoleApp1
 {
-    class Hero
+    public class Hero
     {
-        private int x; //координаты героя
-        
         private int y;
         
         private int xP;//координаты принцессы
@@ -22,9 +18,13 @@ namespace ConsoleApp1
         
         private string Message; //статус
 
-        public Hero(int x, int y, int xP, int yP)
+        public Hero(
+            int x, 
+            int y, 
+            int xP, 
+            int yP)
         { 
-            this.x = x;
+            X = x;
           
             this.y = y;
           
@@ -41,13 +41,8 @@ namespace ConsoleApp1
             Message = "start the game";
         }
 
-        public int X
-        {
-            get
-            {
-                return x;
-            }
-        }
+        public int X { get; private set; }
+
         public int XP
         {
             get
@@ -90,14 +85,14 @@ namespace ConsoleApp1
             
             health -= bombPower;
            
-            Message = "You are exploded! Power bobmb =  "+ bombPower.ToString();
+            Message = $"You are exploded! Power bobmb =  {bombPower}";
            
             Console.ForegroundColor = ConsoleColor.Red;
             
             if (health <= 0)
-                
+            {
                 EndGame();
-
+            }
         }
 
         public void Step(char[,] arr, int n,int dx, int dy)
@@ -110,44 +105,42 @@ namespace ConsoleApp1
            
             x = NewCoordinate(x,dx);
             
-            y= NewCoordinate(y,dy);
+            y = NewCoordinate(y,dy);
 
-           if (x == xP && y==yP)
+            if (x == xP && y==yP)
             {
-                
                 Message = "You are winner!";
                 
                 Console.ForegroundColor = ConsoleColor.Green;
                 
                 EndGame();
-                
-                return;
             }
-
-            if (steps == 0)
-            { 
+            else if(steps == 0)
+            {
                 EndGame();
-              
+
                 Message = "Step =0, End the game!";
-              
-                return;
             }
-                        
-            if (arr[x, y] == 'x')
+            else if (arr[x, y] == 'x')
             {
                 Explode();
             }
         }
 
-        public int NewCoordinate(int coordinate, int delta)
+        public int NewCoordinate(
+            int coordinate,
+            int delta)
         {
-            int temp = coordinate + delta;
+            var temp = coordinate + delta;
             
-            if (temp==-1 || temp==10)
-            { 
-                return coordinate; 
+            if (temp == -1 || temp == 10)
+            {
+                return coordinate;
             }
-            return temp;
+            else
+            {
+                return temp;
+            }
         }
 
         public void EndGame()

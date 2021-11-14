@@ -4,7 +4,7 @@ namespace FindThePrincess.Models.Opponents
     {
         string Name { get; }
 
-        string Level { get; }
+        int Level { get; }
 
         int Damage { get; }
     }
