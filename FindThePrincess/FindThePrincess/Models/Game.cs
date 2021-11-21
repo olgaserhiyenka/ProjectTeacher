@@ -2,5 +2,16 @@
 {
     public class Game
     {
+        public Map Map { get; set; }
+
+
+        public void InitHeroPosition()
+        {
+
+        }
+        public void MoveHero()
+        {
+
+        }
     }
 }

@@ -19,11 +19,5 @@ namespace FindThePrincess.Models.Opponents
 
             Damage = damage;
         }
-
-        public void SetDamag(
-            int damage)
-        {
-           Damage = damage;
-        }
     }
 }
