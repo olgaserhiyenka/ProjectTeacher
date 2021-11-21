@@ -19,16 +19,6 @@ namespace FindThePrincess
                 else
                 {
                     //ConsoleGameHelper.Start();
-
-                    var list = new List<IOpponent>();
-
-                    for(var i = 0; i < 10; i++)
-                    {
-                        var orc = new Orc(
-                            name: $"Orc №{i + 1}",
-                            level: 1,
-                            damage: 60);
-                    }
                 }
             }
         }

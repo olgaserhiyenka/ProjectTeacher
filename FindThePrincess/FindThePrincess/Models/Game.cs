@@ -1,4 +1,6 @@
-﻿namespace FindThePrincess.Models
+﻿using FindThePrincess.Models.Maps;
+
+namespace FindThePrincess.Models
 {
     public class Game
     {
