@@ -15,47 +15,61 @@ namespace FindThePrincess.Models.Maps
 
         public int YSize { get; private set; }
 
+        public HeroOnMap HeroOnMap { get; private set; }
+
         public List<OpponentOnMap> Opponents { get; private set; }
 
         #endregion
 
-        public HeroOnMap HeroOnMap { get; private set; }
-
         public Map(
-            HeroOnMap heroOnMap,
-            List<OpponentOnMap> opponents)
+            int xSize,
+            int ySize,
+            HeroOnMap heroOnMap)
         {
+            XSize = xSize;
+
+            YSize = ySize;
+
             HeroOnMap = heroOnMap;
 
-            Opponents = opponents;
+            Opponents = new List<OpponentOnMap>();
         }
 
-        public void InitialOpponentOnMap(int countOfOpponent)
+        public void InitOpponentOnMap(List<IOpponent> opponents)
         {
             var currentCount = 0;
-            var rand = new Random();
-            while (currentCount < countOfOpponent) // расставляем 10 ловушек
+
+            var random = new Random();
+
+            // расставляем 10 ловушек
+            foreach(var opponent in opponents)
             {
-                var temporarity = rand.Next(100);
+                do
+                {
+                    var temporarity = random.Next(100);
 
-                var temporarityRow = temporarity / 10;
+                    var temporarityRow = temporarity / 10;
 
-                var temporarityCol = temporarity % 10;
+                    var temporarityCol = temporarity % 10;
 
-                Position temporarityPosition = new (temporarityRow, temporarityCol);
-                
-                var temporarityDamag= rand.Next(40);
-                             
-                Orc temporarityOrc=new ("A",1, temporarityDamag);
+                    if (true)
+                    {
+                        Opponents.Add(new(
+                            opponent: opponent, 
+                            position: new(
+                                xCoordinate: temporarityRow, 
+                                yCoordinate: temporarityCol)));
 
-                OpponentOnMap temporarityOrcInMap=new (temporarityOrc, temporarityPosition);
+                        break;
+                    }
+                } while (true);
 
-                Opponents.Add(temporarityOrcInMap);
+                //var temporarityDamag = random.Next(40);
 
-                currentCount++;
-
+                //Orc temporarityOrc = new("A", 1, temporarityDamag);
             }
         }
+
         public void InitialHeroOnMap(string NameOfHero)
         {
             var rand = new Random();
@@ -66,7 +80,7 @@ namespace FindThePrincess.Models.Maps
 
             var temporarityY = temporarity % 10;
 
-         //   HeroOnMap.Hero.Name = NameOfHero;
+            //   HeroOnMap.Hero.Name = NameOfHero;
             Hero temporarityHero = new(NameOfHero);
 
             Position temporarityPosition = new(temporarityX, temporarityY);

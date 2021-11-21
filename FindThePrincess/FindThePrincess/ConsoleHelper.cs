@@ -12,6 +12,27 @@ namespace FindThePrincess
             return value;
         }
 
+        public static int GetIntFromConsole(
+            string message = "Input number value",
+            string errorMessage = "This is not number!"
+            )
+        {
+            int value;
+
+            PrintMessage(message);
+
+            while (!int.TryParse(Console.ReadLine(), out value))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                PrintMessage(errorMessage);
+
+                Console.ResetColor();
+            }
+
+            return value;
+        }
+
         public static void PrintMessage(string message)
         {
             Console.WriteLine(message);
