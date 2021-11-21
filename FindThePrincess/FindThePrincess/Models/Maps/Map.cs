@@ -37,7 +37,7 @@ namespace FindThePrincess.Models.Maps
 
         }
 
-        public void InitOpponentsOnMap(List<IOpponent> opponents)
+        public void InitOpponentOnMap(List<IOpponent> opponents)
         {
             var currentCount = 0;
 
@@ -48,9 +48,7 @@ namespace FindThePrincess.Models.Maps
             {
                 do
                 {
-                    var temporarity = random.Next(100);
-
-                    var temporarityRow = temporarity / 10;
+                   var temporarityRow = temporarity / 10;
 
                     var temporarityCol = temporarity % 10;
 

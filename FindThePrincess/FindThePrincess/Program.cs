@@ -18,7 +18,7 @@ namespace FindThePrincess
                 }
                 else
                 {
-                    //ConsoleGameHelper.Start();
+                    ConsoleGameHelper.Start();
                 }
             }
         }
