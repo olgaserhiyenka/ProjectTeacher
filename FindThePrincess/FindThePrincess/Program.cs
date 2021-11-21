@@ -6,13 +6,14 @@ namespace FindThePrincess
     {
         static void Main(string[] args)
         {
+            //int[] a = new int[5];
             while (true)
             {
                 Console.WriteLine("Вы готовы начать?");
 
                 if (false)
                 {
-                    break;
+                    //break;
                 }
                 else
                 {

@@ -4,13 +4,13 @@ namespace FindThePrincess.Models.Opponents
     {
         public string Name { get; private set; }
 
-        public string Level { get; private set; }
+        public int Level { get; private set; }
 
         public int Damage { get; private set; }
 
         public Orc(
             string name = "Orc",
-            string level = "Level 1",
+            int level = 1,
             int damage = 40)
         {
             Name = name;
@@ -18,6 +18,12 @@ namespace FindThePrincess.Models.Opponents
             Level = level;
 
             Damage = damage;
+        }
+
+        public void SetDamag(
+            int damage)
+        {
+           Damage = damage;
         }
     }
 }
