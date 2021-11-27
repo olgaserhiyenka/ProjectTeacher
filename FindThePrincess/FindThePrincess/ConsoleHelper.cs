@@ -1,4 +1,5 @@
 ﻿using FindThePrincess.Models.Maps;
+using FindThePrincess.Models;
 using System;
 
 namespace FindThePrincess
@@ -38,25 +39,18 @@ namespace FindThePrincess
             Console.WriteLine(message);
         }
 
-        public static void PrintMap(Map map)
+        public static void PrintMap(Game game)
         {
-            var letterOfHero=map.HeroOnMap.Hero.Name[0].ToString().ToUpper();
+            var letterOfHero=game.Map.HeroOnMap.Hero.Name[0].ToString().ToUpper();
 
-            for(var i = 0; i < map.XSize; i++)
+            for(var i = 0; i < game.Map.XSize; i++)
             {
-                for (var j = 0; j < map.YSize; j++)
+                for (var j = 0; j < game.Map.YSize; j++)
                 {
-                    if (map.HeroOnMap.Position.XCoordinate == i && map.HeroOnMap.Position.YCoordinate == j)
-                    {
-                        Console.WriteLine(letterOfHero);
-                    }
-                    else
-                    {
-                        Console.WriteLine('*');
-                    }
+                   Console.Write(game.ArrayOfMap[i,j]);
                 }
-                //if (map)
-                //{ }
+
+                Console.WriteLine();
             }
         }
     }
