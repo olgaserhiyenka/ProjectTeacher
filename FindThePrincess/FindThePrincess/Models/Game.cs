@@ -36,14 +36,14 @@ namespace FindThePrincess.Models
                     break;
                 
                 case 1:
-                    ArrayOfMap[0, Map.XSize] = 'H';
+                    ArrayOfMap[0, Map.YSize-1] = 'H';
 
                     temporarityPosition = new(0, Map.YSize-1);
 
                     break;
 
                 case 2:
-                    ArrayOfMap[0, Map.XSize] = 'H';
+                    ArrayOfMap[Map.XSize-1, 0] = 'H';
 
                     temporarityPosition = new(Map.XSize-1, 0);
 
