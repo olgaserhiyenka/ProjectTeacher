@@ -1,4 +1,5 @@
 ﻿using FindThePrincess.Models.Opponents;
+using FindThePrincess.Models;
 using System;
 using System.Collections.Generic;
 
@@ -6,21 +7,27 @@ namespace FindThePrincess
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            while (true)
-            {
-                Console.WriteLine("Вы готовы начать?");
+            var game= new Game();
 
-                if (false)
-                {
-                    //break;
-                }
-                else
-                {
-                    ConsoleGameHelper.Start();
-                }
-            }
+            game.InitialMap();
+
+            ConsoleHelper.PrintMap(game);
+
+            //while (true)
+            //{
+            //    Console.WriteLine("Вы готовы начать?");
+
+            //    if (false)
+            //    {
+            //        //break;
+            //    }
+            //    else
+            //    {
+            //        ConsoleGameHelper.Start();
+            //    }
+            //}
         }
     }
 }

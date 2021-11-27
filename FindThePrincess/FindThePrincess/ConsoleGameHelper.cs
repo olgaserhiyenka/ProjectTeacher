@@ -15,7 +15,7 @@ namespace FindThePrincess
 
         public static Map InitMap()
         {
-            var hero = InitHero();
+            //var hero = InitHero();
 
             var xMapSize = ConsoleHelper.GetIntFromConsole(message: "Укажите длину карты");
 
@@ -25,9 +25,10 @@ namespace FindThePrincess
                 xSize: xMapSize,
                 ySize: yMapSize);
 
-            map.InitHeroOnMap(hero);
+            //map.InitHeroOnMap(hero);
 
-            map.InitOpponentsOnMap(InitOpponents());
+            //map.InitOpponentsOnMap(InitOpponents());
+            return map;
         }
 
         public static Hero InitHero()
