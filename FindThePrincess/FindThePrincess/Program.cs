@@ -11,7 +11,7 @@ namespace FindThePrincess
         {
             var game= new Game();
 
-            game.InitialMap();
+            game.InitGame();
 
             ConsoleHelper.PrintMap(game);
 

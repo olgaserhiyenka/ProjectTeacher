@@ -11,41 +11,42 @@ namespace FindThePrincess.Models
     public class Game
     {
         public Map Map { get; set; }
-        //Образ карты
+
+        //2D image of the map
         public char[,] ArrayOfMap { get; private set; }
 
-        // логика определения позиции героя на карте в момент старта
-        public Position InitHeroPosition()
+        //Дogic of determining the position of the hero on the map at the time of the start
+        private Position InitHeroPosition()
         {
-            var rand = new Random();
+            var random = new Random();
 
             Position temporarityPosition;
 
             //определяем один из 4-х углов карты
-            var temporarityNumber = rand.Next(3);
+            var temporarityNumber = random.Next(3);
 
             //переводи номер угла в координаты
             switch (temporarityNumber)
             {
                 case 0:
-                
+
                     ArrayOfMap[0, 0] = 'H';
 
                     temporarityPosition = new(0, 0);
 
                     break;
-                
-                case 1:
-                    ArrayOfMap[0, Map.YSize-1] = 'H';
 
-                    temporarityPosition = new(0, Map.YSize-1);
+                case 1:
+                    ArrayOfMap[0, Map.YSize - 1] = 'H';
+
+                    temporarityPosition = new(0, Map.YSize - 1);
 
                     break;
 
                 case 2:
-                    ArrayOfMap[Map.XSize-1, 0] = 'H';
+                    ArrayOfMap[Map.XSize - 1, 0] = 'H';
 
-                    temporarityPosition = new(Map.XSize-1, 0);
+                    temporarityPosition = new(Map.XSize - 1, 0);
 
                     break;
 
@@ -53,7 +54,7 @@ namespace FindThePrincess.Models
 
                     ArrayOfMap[0, Map.XSize] = 'H';
 
-                    temporarityPosition = new(Map.XSize - 1, Map.YSize-1);
+                    temporarityPosition = new(Map.XSize - 1, Map.YSize - 1);
 
                     break;
 
@@ -62,18 +63,15 @@ namespace FindThePrincess.Models
             return temporarityPosition;
         }
 
-         
-        
-       
-        public Hero InitialHero()
+        private Hero InitHero()
         {
             return ConsoleGameHelper.InitHero();
         }
-        
+
         //Создание карты и начало создания образа карты
-        public void InitialMap()
+        public void InitGame()
         {
-            Map=ConsoleGameHelper.InitMap();
+            Map = ConsoleGameHelper.InitMap();
 
             ArrayOfMap = new char[Map.XSize, Map.YSize];
 
@@ -86,17 +84,17 @@ namespace FindThePrincess.Models
                 }
             }
 
-          //  Map.HeroOnMap.Hero = InitialHero();
+            //  Map.HeroOnMap.Hero = InitialHero();
 
-            var temporarityHero = InitialHero();
+            var temporarityHero = InitHero();
 
             var temporarityPosition = InitHeroPosition();
 
             HeroOnMap temporarityHeroOnMap = new(temporarityHero, temporarityPosition);
 
-            Map.InitialHeroOnMap(temporarityHeroOnMap);             
-
+            Map.InitialHeroOnMap(temporarityHeroOnMap);
         }
+
         public void MoveHero()
         {
 
