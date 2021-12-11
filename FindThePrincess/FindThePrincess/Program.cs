@@ -15,6 +15,8 @@ namespace FindThePrincess
 
             ConsoleHelper.PrintMap(game);
 
+            ConsoleHelper.PrintMessage(ConsoleGameHelper.FormPlayerStatus(game.GetStatus()));
+
             //while (true)
             //{
             //    Console.WriteLine("Вы готовы начать?");

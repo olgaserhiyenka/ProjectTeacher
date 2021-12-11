@@ -49,5 +49,12 @@ namespace FindThePrincess
 
             return CountOfMoves;
         }
+
+        public static string FormPlayerStatus((string Name, int Health, int Moves) status)
+        {
+            var PlayerStatus = $"Hero {status.Name}, health {status.Health}, last moves {status.Moves} ";
+
+            return PlayerStatus;
+        }
     }
 }

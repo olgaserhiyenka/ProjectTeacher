@@ -64,7 +64,7 @@ namespace FindThePrincess.Models
             return temporarityPosition;
         }
 
-        private Hero InitHero()
+        private static Hero InitHero()
         {
             return ConsoleGameHelper.InitHero();
         }
@@ -126,13 +126,17 @@ namespace FindThePrincess.Models
                     level: 1,
                     damage: temoparityDamage);
 
-                 var temporarityXPosition= random.Next(0,Map.XSize);
+                int temporarityXPosition;
 
-                 var temporarityYPosition = random.Next(0, Map.YSize);
+                int temporarityYPosition;
 
                 while (true)
-                { 
-                if (ArrayOfMap[temporarityXPosition, temporarityYPosition] == '*')
+                {
+                    temporarityXPosition = random.Next(0, Map.XSize);
+
+                    temporarityYPosition = random.Next(0, Map.YSize);
+
+                    if (ArrayOfMap[temporarityXPosition, temporarityYPosition] == '*')
                     {
                         ArrayOfMap[temporarityXPosition, temporarityYPosition] = 'x';
 
@@ -149,8 +153,21 @@ namespace FindThePrincess.Models
 
             return list;
         }
-        public void MoveHero()
+
+        public (string, int, int) GetStatus()
         {
+            var nameOfHero = Map.HeroOnMap.Hero.Name;
+
+            var healsOfHero = Map.HeroOnMap.Hero.Health;
+
+            var status = (nameOfHero, healsOfHero, CountOfMoves);
+
+            return status;
+        }
+
+        public void MoveHero(Position theСhangePosition)
+        {
+            Map.HeroOnMap.Position = theСhangePosition;
 
         }
     }

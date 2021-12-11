@@ -47,7 +47,14 @@ namespace FindThePrincess
             {
                 for (var j = 0; j < game.Map.YSize; j++)
                 {
-                   Console.Write(game.ArrayOfMap[i,j]);
+                    if (game.ArrayOfMap[i, j] == 'H')
+                    {
+                        Console.Write(letterOfHero);
+                    }
+                    else
+                    {
+                        Console.Write('*');
+                    }
                 }
 
                 Console.WriteLine();
