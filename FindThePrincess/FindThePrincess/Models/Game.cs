@@ -12,20 +12,21 @@ namespace FindThePrincess.Models
     {
         public Map Map { get; set; }
 
+        public int CountOfMoves { get; private set; }
         //2D image of the map
         public char[,] ArrayOfMap { get; private set; }
 
-        //Дogic of determining the position of the hero on the map at the time of the start
+        //Logic of determining the position of the hero on the map at the time of the start
         private Position InitHeroPosition()
         {
             var random = new Random();
 
             Position temporarityPosition;
 
-            //определяем один из 4-х углов карты
+            //Define one of the 4 corners of the map
             var temporarityNumber = random.Next(3);
 
-            //переводи номер угла в координаты
+            //Translate the number of corner  into coordinates
             switch (temporarityNumber)
             {
                 case 0:
@@ -68,11 +69,9 @@ namespace FindThePrincess.Models
             return ConsoleGameHelper.InitHero();
         }
 
-        //Создание карты и начало создания образа карты
-        public void InitGame()
+        //Initialization the map image
+        private void InitArrayOfMap()
         {
-            Map = ConsoleGameHelper.InitMap();
-
             ArrayOfMap = new char[Map.XSize, Map.YSize];
 
             for (var i = 0; i < Map.XSize; i++)
@@ -83,8 +82,14 @@ namespace FindThePrincess.Models
 
                 }
             }
+        }
 
-            //  Map.HeroOnMap.Hero = InitialHero();
+        //Create the map and start creating the map image
+        public void InitGame()
+        {
+            Map = ConsoleGameHelper.InitMap();
+
+            InitArrayOfMap();
 
             var temporarityHero = InitHero();
 
@@ -92,9 +97,58 @@ namespace FindThePrincess.Models
 
             HeroOnMap temporarityHeroOnMap = new(temporarityHero, temporarityPosition);
 
-            Map.InitialHeroOnMap(temporarityHeroOnMap);
+            Map.InitHeroOnMap(temporarityHeroOnMap);
+
+            var temporarityOpponentsOnMap= InitOpponentsOnMap();
+
+            Map.InitOpponentOnMap(temporarityOpponentsOnMap);
+
+            CountOfMoves = ConsoleGameHelper.DefinitionCountOfMoves();
         }
 
+        //Creating opponents and determining their position on the map
+        public List<OpponentOnMap> InitOpponentsOnMap()
+        {
+            var list = new List<OpponentOnMap>();
+
+            var countOfOpponent = ConsoleGameHelper.DefinitionCountOfOpponents(); 
+            
+            var random = new Random();
+
+            Orc newOrc;
+
+            for (var i = 0; i < countOfOpponent; i++)
+            {
+                var temoparityDamage = random.Next(DefaultValues.MinDamage, DefaultValues.MaxDamage);
+
+                newOrc = new Orc(
+                    name: $"Orc №{i + 1}",
+                    level: 1,
+                    damage: temoparityDamage);
+
+                 var temporarityXPosition= random.Next(0,Map.XSize);
+
+                 var temporarityYPosition = random.Next(0, Map.YSize);
+
+                while (true)
+                { 
+                if (ArrayOfMap[temporarityXPosition, temporarityYPosition] == '*')
+                    {
+                        ArrayOfMap[temporarityXPosition, temporarityYPosition] = 'x';
+
+                        break;
+                    }
+                }
+
+                var temporarityPosition = new Position(temporarityXPosition, temporarityYPosition);
+
+                var temporarityOpponentOnMap = new OpponentOnMap(newOrc, temporarityPosition);
+
+                list.Add(temporarityOpponentOnMap);
+            }
+
+            return list;
+        }
         public void MoveHero()
         {
 

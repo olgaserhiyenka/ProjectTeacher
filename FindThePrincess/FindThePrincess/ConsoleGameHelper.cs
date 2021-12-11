@@ -15,25 +15,20 @@ namespace FindThePrincess
 
         public static Map InitMap()
         {
-            //var hero = InitHero();
+            var xMapSize = ConsoleHelper.GetIntFromConsole(message: "Enter length of the card");
 
-            var xMapSize = ConsoleHelper.GetIntFromConsole(message: "Укажите длину карты");
-
-            var yMapSize = ConsoleHelper.GetIntFromConsole(message: "Укажите ширину карты");
+            var yMapSize = ConsoleHelper.GetIntFromConsole(message: "Enter width of the card");
 
             var map = new Map(
                 xSize: xMapSize,
                 ySize: yMapSize);
 
-            //map.InitHeroOnMap(hero);
-
-            //map.InitOpponentsOnMap(InitOpponents());
             return map;
         }
 
         public static Hero InitHero()
         {
-            ConsoleHelper.PrintMessage("Как Вы хотете назвать героя?");
+            ConsoleHelper.PrintMessage("What do you want to name the hero?");
 
             var nameOfHero = ConsoleHelper.GetSting();
 
@@ -41,22 +36,18 @@ namespace FindThePrincess
 
             return hero;
         }
-
-        public static List<IOpponent> InitOpponents()
+        public static int DefinitionCountOfOpponents()
         {
-            var list = new List<IOpponent>();
+           var CountOfOpponents = ConsoleHelper.GetIntFromConsole("How many opponents do you need in the game?");
 
-            for (var i = 0; i < 10; i++)
-            {
-                var orc = new Orc(
-                    name: $"Orc №{i + 1}",
-                    level: 1,
-                    damage: 60);
+            return CountOfOpponents;
+        }
 
-                list.Add(orc);
-            }
+        public static int DefinitionCountOfMoves()
+        {
+            var CountOfMoves = ConsoleHelper.GetIntFromConsole("How many moves do you need in the game?");
 
-            return list;
+            return CountOfMoves;
         }
     }
 }

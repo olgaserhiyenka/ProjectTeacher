@@ -35,37 +35,12 @@ namespace FindThePrincess.Models.Maps
 
         }
 
-        //public void InitOpponentOnMap(List<IOpponent> opponents)
-        //{
-        //    var currentCount = 0;
+        public void InitOpponentOnMap(List<OpponentOnMap> opponents)
+        {
+            Opponents = opponents;
+        }
 
-        //    var random = new Random();
-
-        //    // расставляем 10 ловушек
-        //    foreach(var opponent in opponents)
-        //    {
-        //        do
-        //        {
-        //           var temporarityRow = temporarity / 10;
-
-        //            var temporarityCol = temporarity % 10;
-
-        //            if (true)
-        //            {
-        //                Opponents.Add(new(
-        //                    opponent: opponent, 
-        //                    position: new(
-        //                        xCoordinate: temporarityRow, 
-        //                        yCoordinate: temporarityCol)));
-
-        //                break;
-        //            }
-        //        } while (true);
-
-        //    }
-        //}
-
-        public void InitialHeroOnMap(HeroOnMap temporarityHeroOnMap)
+        public void InitHeroOnMap(HeroOnMap temporarityHeroOnMap)
         {
             HeroOnMap = temporarityHeroOnMap;
         }
